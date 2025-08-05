@@ -13,8 +13,9 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/eroSpace/commands
 after-startup-command = [
-   'exec-and-forget sketchybar',
-   'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0']
+  'exec-and-forget sketchybar',
+  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
+]
 
 # exec-on-workspace-change callback allows to run arbitrary process when focused
 # workspace changes. It may be useful for integrating with bars.
@@ -25,7 +26,7 @@ after-startup-command = [
 exec-on-workspace-change = [
   '/bin/bash',
   '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
 
 # Start AeroSpace at login
@@ -67,11 +68,11 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
 inner.horizontal = 10
-inner.vertical =   10
-outer.left =       10
-outer.bottom =     10
-outer.top =        10
-outer.right =      10
+inner.vertical = 10
+outer.left = 10
+outer.bottom = 10
+outer.top = [{ monitor.1 = 45 }, { monitor.2 = 45 }, { monitor.3 = 10 }, 10]
+outer.right = 10
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -154,7 +155,10 @@ alt-shift-semicolon = 'mode service'
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 #s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+f = [
+  'layout floating tiling',
+  'mode main',
+] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
 alt-shift-h = ['join-with left', 'mode main']
@@ -163,12 +167,12 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 [mode.resize.binding]
-    h = 'resize width -50'
-    j = 'resize height +50'
-    k = 'resize height -50'
-    l = 'resize width +50'
-    enter = 'mode main'
-    esc = 'mode main'
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+enter = 'mode main'
+esc = 'mode main'
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
@@ -180,7 +184,7 @@ run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.rider'
-run = "move-node-to-workspace 3"
+run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
@@ -196,7 +200,7 @@ run = "move-node-to-workspace 5"
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.Outlook'
-run = "move-node-to-workspace 5"
+run = "move-node-to-workspace 7"
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
@@ -204,10 +208,10 @@ run = "move-node-to-workspace 5"
 
 # force certain workspaces to certain monitors
 [workspace-to-monitor-force-assignment]
-1 = '1'           # Monitor sequence number from left to right. 1-based indexing (1, 2, 3, etc.)
+1 = '1' # Monitor sequence number from left to right. 1-based indexing (1, 2, 3, etc.)
 2 = '2'
 3 = '2'
 4 = '2'
-5 = '3'
-6 = '2'
-7 = '1'
+5 = '2'
+6 = '1'
+7 = '3'
